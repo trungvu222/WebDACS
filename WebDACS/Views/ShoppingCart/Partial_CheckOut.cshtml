@@ -3,11 +3,18 @@
 {
     HttpMethod = "POST",
     UpdateTargetId = "load_data",
-    OnComplete="OnSuccesCO",
+    OnSuccess = "OnSuccessCO",
     OnFailure="OnFailure"
 
 }, new { @Id = "myForm" }))
 {
+    <script>
+        function OnSuccessCO(res) {
+            if (res.Success) {
+                location.href = "/ShoppingCart/CheckOutSuccess";
+            }
+        }
+    </script>
     @Html.AntiForgeryToken()
     <h3>Thông tin khách hàng</h3>
     <div class="form-group">

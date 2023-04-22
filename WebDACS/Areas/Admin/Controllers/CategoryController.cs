@@ -8,6 +8,7 @@ using WebDACS.Models.EF;
 
 namespace WebDACS.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Quản trị viên")]
     public class CategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -56,6 +57,7 @@ namespace WebDACS.Areas.Admin.Controllers
                 model.Alias = WebDACS.Models.Common.Filter.FilterChar(model.Title);
                 db.Entry(model).Property(x => x.Title).IsModified = true;
                 db.Entry(model).Property(x => x.Description).IsModified = true;
+                db.Entry(model).Property(x => x.Link).IsModified = true;
                 db.Entry(model).Property(x => x.Alias).IsModified = true;
                 db.Entry(model).Property(x => x.SeoDescription).IsModified = true;
                 db.Entry(model).Property(x => x.SeoKeywords).IsModified = true;

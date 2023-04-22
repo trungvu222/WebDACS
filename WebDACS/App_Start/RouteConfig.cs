@@ -36,6 +36,24 @@ namespace WebDACS
                 defaults: new { controller = "Products", action = "ProductCategory", id = UrlParameter.Optional },
                 namespaces: new[] { "WebDACS.Controllers" }
             );
+            //routes.MapRoute(
+            //    name: "DetailAdv",
+            //    url: "{alias}-n{id}",
+            //    defaults: new { controller = "Adv", action = "Detail", id = UrlParameter.Optional },
+            //    namespaces: new[] { "WebDACS.Controllers" }
+            //);
+            routes.MapRoute(
+                name: "AdvList",
+                url: "khuyen-mai",
+                defaults: new { controller = "Adv", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new[] { "WebDACS.Controllers" }
+            );
+            routes.MapRoute(
+                name: "BaiViet",
+                url: "post/{alias}",
+                defaults: new { controller = "Article", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new[] { "WebDACS.Controllers" }
+            );
             routes.MapRoute(
                name: "detailProduct",
                url: "chi-tiet/{alias}-p{id}",
@@ -46,6 +64,18 @@ namespace WebDACS
                 name: "Products",
                 url: "san-pham",
                 defaults: new { controller = "Products", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new[] { "WebDACS.Controllers" }
+            );
+            routes.MapRoute(
+                name: "DetailNew",
+                url: "{alias}-n{id}",
+                defaults: new { controller = "News", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "WebDACS.Controllers" }
+            );
+            routes.MapRoute(
+                name: "NewsList",
+                url: "tin-tuc",
+                defaults: new { controller = "News", action = "Index", alias = UrlParameter.Optional },
                 namespaces: new[] { "WebDACS.Controllers" }
             );
             routes.MapRoute(

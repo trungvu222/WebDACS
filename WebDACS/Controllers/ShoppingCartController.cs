@@ -77,7 +77,7 @@ namespace WebDACS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckOut(OrderViewModel req)
         {
-            var code = new { Sucess = false, Code = -1 };
+            var code = new { Success = false, Code = -1 };
             if (ModelState.IsValid)
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
@@ -141,7 +141,8 @@ namespace WebDACS.Controllers
                     contentAdmin = contentAdmin.Replace("{{TongTien}}", WebDACS.Common.Common.FormatNumber(TongTien, 0));
                     WebDACS.Common.Common.SendMail("ColorShop", "Đơn hàng mới #" + order.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
                     cart.ClearCart();
-                    return RedirectToAction("CheckOutSuccess");
+                    code = new { Success = true, Code = 1 };
+                    //return RedirectToAction("CheckOutSuccess");
                 }
             }
             return Json(code);

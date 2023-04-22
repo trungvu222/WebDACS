@@ -6,21 +6,21 @@
             <img src="~/Content/clients/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Quản lý Admin</a>
+            <a href="~/admin/home" class="d-block">Quản lý Admin</a>
         </div>
     </div>
 
     <!-- SidebarSearch Form -->
     @*<div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -75,16 +75,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/admin/order" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Đơn hàng
-                        @*<span class="right badge badge-danger">New</span>*@
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/admin/posts" class="nav-link">
+                <a href="/admin/adv" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Quảng cáo
@@ -113,14 +104,57 @@
                             <p>Sản phẩm</p>
                         </a>
                     </li>
-
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="/posts" class="nav-link">
+                <a href="/admin/order" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Đơn hàng
+                        @*<span class="right badge badge-danger">New</span>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/statistical" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Thống kê doanh thu
+                        @*<span class="right badge badge-danger">New</span>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/settingsystem" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Cấu hình hệ thống
+                        @*<span class="right badge badge-danger">New</span>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/role" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Quyền quản trị viên
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/account" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Tài khoản
+                        @*<span class="right badge badge-danger">New</span>*@
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:document.getElementById('logOffForm').submit()" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Đăng xuất
                         @*<span class="right badge badge-danger">New</span>*@
                     </p>
                 </a>
@@ -130,3 +164,13 @@
     <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->
+
+@if (Request.IsAuthenticated)
+{
+    <div style="display:none">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @id = "logOffForm" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+    </div>
+}

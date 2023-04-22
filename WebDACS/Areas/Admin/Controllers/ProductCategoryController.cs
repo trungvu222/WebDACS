@@ -8,6 +8,7 @@ using WebDACS.Models.EF;
 
 namespace WebDACS.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Quản trị viên")]
     public class ProductCategoryController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

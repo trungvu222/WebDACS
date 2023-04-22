@@ -8,6 +8,7 @@ using WebDACS.Models;
 
 namespace WebDACS.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Quản trị viên")]
     public class OrderController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
