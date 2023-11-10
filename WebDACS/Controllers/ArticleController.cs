@@ -16,5 +16,10 @@ namespace WebDACS.Controllers
             var item = db.Posts.FirstOrDefault(x => x.Alias == alias);
             return View(item);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }

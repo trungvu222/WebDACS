@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="CKFinder, Version=2.4.0.2631, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Downloads\ckfinder\ckfinder\bin\Release\CKFinder.dll</HintPath>
@@ -205,7 +208,9 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +270,22 @@
     <Compile Include="Migrations\202304081250091_EditCategory2.Designer.cs">
       <DependentUpon>202304081250091_EditCategory2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311071404406_InsertCustomerIdOrder.cs" />
+    <Compile Include="Migrations\202311071404406_InsertCustomerIdOrder.Designer.cs">
+      <DependentUpon>202311071404406_InsertCustomerIdOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311071646077_Table_Review.cs" />
+    <Compile Include="Migrations\202311071646077_Table_Review.Designer.cs">
+      <DependentUpon>202311071646077_Table_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311071652144_Table_Review_Edit_Forenkey.cs" />
+    <Compile Include="Migrations\202311071652144_Table_Review_Edit_Forenkey.Designer.cs">
+      <DependentUpon>202311071652144_Table_Review_Edit_Forenkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311080618137_tableWishList.cs" />
+    <Compile Include="Migrations\202311080618137_tableWishList.Designer.cs">
+      <DependentUpon>202311080618137_tableWishList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
@@ -282,9 +303,11 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\ReviewProduct.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\EF\ThongKe.cs" />
+    <Compile Include="Models\EF\Wishlist.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
@@ -3536,6 +3559,7 @@
     <Content Include="Areas\Admin\Views\Adv\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductImage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3613,6 +3637,11 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Adv\Index.cshtml" />
     <Content Include="Views\Adv\Detail.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Review\_Review.cshtml" />
+    <Content Include="Views\Review\_Load_Review.cshtml" />
+    <Content Include="Views\Wishlist\Index.cshtml" />
+    <Content Include="Views\Review\LichSuDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3676,6 +3705,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304081250091_EditCategory2.resx">
       <DependentUpon>202304081250091_EditCategory2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071404406_InsertCustomerIdOrder.resx">
+      <DependentUpon>202311071404406_InsertCustomerIdOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071646077_Table_Review.resx">
+      <DependentUpon>202311071646077_Table_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071652144_Table_Review_Edit_Forenkey.resx">
+      <DependentUpon>202311071652144_Table_Review_Edit_Forenkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311080618137_tableWishList.resx">
+      <DependentUpon>202311080618137_tableWishList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

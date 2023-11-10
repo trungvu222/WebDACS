@@ -34861,16 +34861,17 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-page,
 .register-page {
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #e9ecef;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100vh;
-  -ms-flex-pack: center;
-  justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #e9ecef;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100vh;
+    -ms-flex-pack: center;
+    justify-content: center;
+    /*background: linear-gradient(to bottom right, #ff966d, #fa538d, #89379c);*/
 }
 
 .login-box,
@@ -34897,6 +34898,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   border-top: 0;
   color: #666;
   padding: 20px;
+  border-radius: 20px;
 }
 
 .login-card-body .input-group .form-control,

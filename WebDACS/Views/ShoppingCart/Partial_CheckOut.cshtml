@@ -1,10 +1,16 @@
 ﻿@model WebDACS.Models.OrderViewModel
+@{
+    if (ViewBag.User != null)
+    {
+
+    }
+}
 @using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
 {
     HttpMethod = "POST",
     UpdateTargetId = "load_data",
     OnSuccess = "OnSuccessCO",
-    OnFailure="OnFailure"
+    OnFailure = "OnFailure"
 
 }, new { @Id = "myForm" }))
 {
@@ -17,28 +23,54 @@
     </script>
     @Html.AntiForgeryToken()
     <h3>Thông tin khách hàng</h3>
-    <div class="form-group">
-        <label>Họ tên khách hàng</label>
-        <input type="text" name="CustomerName" required class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Số điện thoại</label>
-        <input type="text" name="Phone" class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Địa chỉ</label>
-        <input type="text" name="Address" class="form-control" autocomplete="off" />
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="Email" class="form-control" autocomplete="off" />
-    </div>
+    if (!Request.IsAuthenticated)
+    {
+        <div class="form-group">
+            <label>Họ tên khách hàng</label>
+            <input type="text" name="CustomerName" required class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" name="Phone" class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input type="text" name="Address" class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="Email" class="form-control" autocomplete="off" />
+        </div>
+    }
+    else
+    {
+        var user = (WebDACS.Models.ApplicationUser)ViewBag.User;
+        <div class="form-group">
+            <label>Họ tên khách hàng</label>
+            <input type="text" name="CustomerName" value="@user.FullName" required class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" name="Phone" value="@user.Phone" class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input type="text" name="Address" class="form-control" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="Email" value="@user.Email" class="form-control" autocomplete="off" />
+        </div>
+    }
+
+
     <div class="form-group">
         <label>Hình thức thanh toán</label>
         <select class="form-control" name="TypePayment">
-            <option value="1" selected>Ship COD</option>
-            <option value="2">Tiền mặt</option>
-            <option value="3">Chuyển khoản</option>
+            <option value="1" selected>Thanh toán khi nhận hàng</option>
+            <option value="2">Thanh toán chuyển khoản ngân hàng</option>
+            <option value="3">Thanh toán thẻ tín dụng</option>
+            <option value="4">Thanh toán ví điện tử</option>
         </select>
     </div>
     <div class="form-group">
